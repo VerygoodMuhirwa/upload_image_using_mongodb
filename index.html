@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Image Uploader</title>
+<link rel="stylesheet" href="style.css">  </head>
+  <body>
+    <form action="/upload" method="POST" enctype="multipart/form-data">
+      <input type="file" name="image" />
+      <button type="submit">Upload Image</button>
+    </form>
+    <h2>Latest Images</h2>
+    <div id="latest-images"></div>
+    <script>
+      fetch('/latest-images')
+        .then((response) => response.json())
+        .then((images) => {
+          const latestImagesDiv = document.querySelector('#latest-images');
+          images.forEach((image) => {
+            console.log(image);
+            const img = document.createElement('img');
+            img.src = `/image/${image._id}`;
+            latestImagesDiv.appendChild(img);
+          });
+        });
+
+    </script>
+  </body>
+</html>

@@ -1,0 +1,5 @@
+#latest-images{
+    display: grid;
+    grid-template-columns: 23em 23em 23em;
+    grid-template-rows: 18em 18em;
+}
